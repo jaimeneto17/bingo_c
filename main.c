@@ -29,9 +29,13 @@
 // }
 
 void jogar(int *cart, int *rack){
-    
+    printf("\n");
+    puts("Essa é sua cartela: ");
+
     print_cartela(cart, rack);
     
+    puts("Fique de olho para ver se não tem ninguem roubando ;)");
+
     // print_rack(rack);
 
     // printf("%d\n", num_marcados(cart, rack));
@@ -39,7 +43,10 @@ void jogar(int *cart, int *rack){
     int acertos = num_marcados(cart, rack);
     // int last_acerto = 0;
     
+    printf("\nPressione enter pra contiunar...");
     do{
+        getchar();
+        system("clear");
         printf("\n+%d\n", sortear(rack));
         
         print_rack(rack);
@@ -47,20 +54,25 @@ void jogar(int *cart, int *rack){
         int buff = num_marcados(cart, rack);
         
         if(buff > acertos){
+            printf("Yeah, +1!\n");
             acertos = buff;
             print_cartela(cart, rack);
+            if(acertos != 24)
+                printf("Faltam apenas: %d", 24 - acertos);
+            else
+                puts("Acho que alguem ganhou!"), puts("Congratulations!!!");
             // printf("\n+%d\n", last_acerto);
         }
         // print_rack(rack);
     }while(acertos < 24);
-    
+    printf("\n");    
     // print_cartela(cart, rack);
     
     // print_rack(rack);
 }
 
 int main(){
-        
+    system("clear");        
     // PLAYER * player = malloc(sizeof(PLAYER));
 
     // create_player(player);
